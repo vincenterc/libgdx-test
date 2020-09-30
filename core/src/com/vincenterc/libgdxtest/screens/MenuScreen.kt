@@ -13,8 +13,8 @@ class MenuScreen(var game: TestGame) : BaseScreen() {
 
         val defaultScreenButton = TextButton("Default Screen", game.skin, "default")
         defaultScreenButton.setPosition(
-            Gdx.graphics.width / 2f - defaultScreenButton.width / 2f,
-            Gdx.graphics.height / 2f - defaultScreenButton.height / 2f
+            stage.width / 2f - defaultScreenButton.width / 2f,
+            stage.height / 2f - defaultScreenButton.height / 2f
         )
         defaultScreenButton.addListener(object : InputListener() {
             override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {

@@ -15,7 +15,7 @@ class DefaultScreen(var game: TestGame) : BaseScreen() {
     override fun show() {
         super.show()
 
-        val menuButton = TextButton("Menu", game.skin, "default")
+        val menuButton = TextButton("Menu", game.skin)
         menuButton.setPosition(
             stage.width - menuButton.width - 10f,
             stage.height - menuButton.height - 10f

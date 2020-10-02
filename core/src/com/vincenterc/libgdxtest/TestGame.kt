@@ -7,7 +7,7 @@ import com.vincenterc.libgdxtest.screens.MenuScreen
 
 class TestGame : Game() {
 
-    lateinit var skin:Skin
+    lateinit var skin: Skin
 
     override fun create() {
         skin = Skin(Gdx.files.internal("skin/uiskin.json"))

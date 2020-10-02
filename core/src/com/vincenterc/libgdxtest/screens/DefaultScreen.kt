@@ -10,7 +10,7 @@ import com.vincenterc.libgdxtest.TestGame
 
 class DefaultScreen(var game: TestGame) : BaseScreen() {
 
-    private lateinit var img: Texture
+    private var img = Texture(Gdx.files.internal("badlogic.jpg"))
 
     override fun show() {
         super.show()
@@ -27,8 +27,6 @@ class DefaultScreen(var game: TestGame) : BaseScreen() {
             }
         })
         stage.addActor(menuButton)
-
-        img = Texture("badlogic.jpg")
     }
 
     override fun render(delta: Float) {

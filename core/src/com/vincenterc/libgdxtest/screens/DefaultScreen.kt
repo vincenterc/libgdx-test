@@ -37,9 +37,9 @@ class DefaultScreen(var game: TestGame) : BaseScreen() {
         Gdx.gl.glClearColor(1f, 0f, 0f, 1f)
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
-        game.batch.begin()
-        game.batch.draw(img, 0f, 0f)
-        game.batch.end()
+        stage.batch.begin()
+        stage.batch.draw(img, 0f, 0f)
+        stage.batch.end()
 
         stage.draw()
     }

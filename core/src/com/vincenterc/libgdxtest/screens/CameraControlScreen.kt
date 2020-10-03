@@ -22,8 +22,8 @@ class CameraControlScreen(var game: TestGame) : BaseScreen() {
     override fun show() {
         viewport.camera.position.set(viewport.worldWidth / 2f, viewport.worldHeight / 2f, 0f)
 
-        var cameraController = OrthoCamController(viewport.camera as OrthographicCamera)
-        var inputMultiplexer = InputMultiplexer()
+        val cameraController = OrthoCamController(viewport.camera as OrthographicCamera)
+        val inputMultiplexer = InputMultiplexer()
         inputMultiplexer.addProcessor(stage)
         inputMultiplexer.addProcessor(cameraController)
         Gdx.input.inputProcessor = inputMultiplexer

@@ -17,8 +17,6 @@ class TwoViewportsScreen(var game: TestGame) : BaseScreen() {
     private var img = Texture(Gdx.files.internal("badlogic.jpg"))
 
     override fun show() {
-        super.show()
-
         // Center camera
         viewport.camera.position.set(viewport.worldWidth / 2f, viewport.worldHeight / 2f, 0f)
 
@@ -43,8 +41,6 @@ class TwoViewportsScreen(var game: TestGame) : BaseScreen() {
     }
 
     override fun render(delta: Float) {
-        super.render(delta)
-
         Gdx.gl.glClearColor(1f, 0f, 0f, 1f)
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
@@ -55,6 +51,7 @@ class TwoViewportsScreen(var game: TestGame) : BaseScreen() {
         batch.end()
 
         stage.viewport.apply()
+        stage.act()
         stage.draw()
     }
 

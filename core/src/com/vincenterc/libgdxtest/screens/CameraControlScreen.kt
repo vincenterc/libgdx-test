@@ -59,6 +59,7 @@ class CameraControlScreen(var game: TestGame) : BaseScreen() {
         batch.end()
 
         stage.viewport.apply()
+        stage.act()
         stage.draw()
     }
 

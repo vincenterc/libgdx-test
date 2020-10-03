@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton
 import com.badlogic.gdx.utils.viewport.StretchViewport
 import com.vincenterc.libgdxtest.TestGame
 
-class DefaultScreen(var game: TestGame) : BaseScreen() {
+class TestScreen(var game: TestGame) : BaseScreen() {
 
     private var viewport = StretchViewport(640f, 480f)
     private var batch = SpriteBatch()

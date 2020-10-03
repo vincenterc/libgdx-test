@@ -10,18 +10,18 @@ class MenuScreen(var game: TestGame) : BaseScreen() {
     override fun show() {
         super.show()
 
-        val defaultScreenButton = TextButton("Default Screen", game.skin)
-        defaultScreenButton.setPosition(
-            stage.width / 2f - defaultScreenButton.width / 2f,
-            stage.height / 2f - defaultScreenButton.height / 2f
+        val testScreenButton = TextButton("Test Screen", game.skin)
+        testScreenButton.setPosition(
+            stage.width / 2f - testScreenButton.width / 2f,
+            stage.height / 2f - testScreenButton.height / 2f
         )
-        defaultScreenButton.addListener(object : InputListener() {
+        testScreenButton.addListener(object : InputListener() {
             override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {
-                game.screen = DefaultScreen(game)
+                game.screen = TestScreen(game)
                 return true
             }
         })
-        stage.addActor(defaultScreenButton)
+        stage.addActor(testScreenButton)
 
         val twoViewportsScreenButton = TextButton("Two Viewports Screen", game.skin)
         twoViewportsScreenButton.setPosition(

@@ -61,6 +61,7 @@ class TwoViewportsScreen(var game: TestGame) : BaseScreen() {
     override fun hide() {
         super.hide()
 
+        batch.dispose()
         img.dispose()
     }
 }

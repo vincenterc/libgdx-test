@@ -22,5 +22,18 @@ class MenuScreen(var game: TestGame) : BaseScreen() {
             }
         })
         stage.addActor(defaultScreenButton)
+
+        val twoViewportsScreenButton = TextButton("Two Viewports Screen", game.skin)
+        twoViewportsScreenButton.setPosition(
+            stage.width / 2f - twoViewportsScreenButton.width / 2f,
+            stage.height / 2f - twoViewportsScreenButton.height / 2f - 30f
+        )
+        twoViewportsScreenButton.addListener(object : InputListener() {
+            override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {
+                game.screen = TwoViewportsScreen(game)
+                return true
+            }
+        })
+        stage.addActor(twoViewportsScreenButton)
     }
 }

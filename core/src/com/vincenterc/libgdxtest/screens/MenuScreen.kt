@@ -11,7 +11,7 @@ class MenuScreen(var game: TestGame) : BaseScreen() {
     override fun show() {
         super.show()
 
-        val testScreenButton = TextButton("Test Screen", game.skin)
+        val testScreenButton = TextButton("Test", game.skin)
         testScreenButton.addListener(object : InputListener() {
             override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {
                 game.screen = TestScreen(game)
@@ -20,7 +20,7 @@ class MenuScreen(var game: TestGame) : BaseScreen() {
         })
         stage.addActor(testScreenButton)
 
-        val twoViewportsScreenButton = TextButton("Two Viewports Screen", game.skin)
+        val twoViewportsScreenButton = TextButton("Two Viewports", game.skin)
         twoViewportsScreenButton.addListener(object : InputListener() {
             override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {
                 game.screen = TwoViewportsScreen(game)
@@ -29,7 +29,7 @@ class MenuScreen(var game: TestGame) : BaseScreen() {
         })
         stage.addActor(twoViewportsScreenButton)
 
-        val cameraControlScreenButton = TextButton("Camera Control Screen", game.skin)
+        val cameraControlScreenButton = TextButton("Camera Control", game.skin)
         cameraControlScreenButton.addListener(object : InputListener() {
             override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {
                 game.screen = CameraControlScreen(game)

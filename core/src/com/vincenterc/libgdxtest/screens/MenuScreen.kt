@@ -29,11 +29,22 @@ class MenuScreen(var game: TestGame) : BaseScreen() {
         })
         stage.addActor(twoViewportsScreenButton)
 
+        val cameraControlScreenButton = TextButton("Camera Control Screen", game.skin)
+        cameraControlScreenButton.addListener(object : InputListener() {
+            override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {
+                game.screen = CameraControlScreen(game)
+                return true
+            }
+        })
+        stage.addActor(cameraControlScreenButton)
+
         val table = Table()
-        table.defaults().fillX()
-        table.add(testScreenButton).spaceBottom(10f)
+        table.defaults().fillX().spaceBottom(10f)
+        table.add(testScreenButton)
         table.row()
         table.add(twoViewportsScreenButton)
+        table.row()
+        table.add(cameraControlScreenButton)
         table.setFillParent(true)
 //        table.debug = true
         stage.addActor(table)

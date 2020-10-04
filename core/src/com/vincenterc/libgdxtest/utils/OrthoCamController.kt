@@ -2,9 +2,15 @@ package com.vincenterc.libgdxtest.utils
 
 import com.badlogic.gdx.InputAdapter
 import com.badlogic.gdx.graphics.OrthographicCamera
+import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.Vector3
 
-class OrthoCamController(private val camera: OrthographicCamera) : InputAdapter() {
+class OrthoCamController(
+    private val camera: OrthographicCamera,
+    var worldWidth: Float,
+    var worldHeight: Float,
+    var scrollScale: Float = 0.05f
+) : InputAdapter() {
 
     private var currentPos = Vector3()
     private var lastPos = Vector3(-1f, -1f, -1f)
@@ -16,6 +22,7 @@ class OrthoCamController(private val camera: OrthographicCamera) : InputAdapter(
             camera.unproject(lastPos)
             deltaOfPos = lastPos.sub(currentPos)
             camera.position.add(deltaOfPos)
+            clampCameraPosition()
         }
         lastPos.set(screenX.toFloat(), screenY.toFloat(), 0f)
 
@@ -26,5 +33,28 @@ class OrthoCamController(private val camera: OrthographicCamera) : InputAdapter(
         lastPos.set(-1f, -1f, -1f)
 
         return false
+    }
+
+    override fun scrolled(amount: Int): Boolean {
+        camera.zoom += amount * scrollScale
+        clampCameraPosition()
+
+        return false
+    }
+
+    private fun clampCameraPosition() {
+        camera.zoom = if (worldWidth > worldHeight) {
+            MathUtils.clamp(camera.zoom, 0.1f, worldHeight / camera.viewportHeight)
+        } else {
+            MathUtils.clamp(camera.zoom, 0.1f, worldWidth / camera.viewportWidth)
+        }
+
+        val effectiveViewportWidth = camera.viewportWidth * camera.zoom
+        val effectiveViewportHeight = camera.viewportHeight * camera.zoom
+
+        camera.position.x =
+            MathUtils.clamp(camera.position.x, effectiveViewportWidth / 2f, worldWidth - effectiveViewportWidth / 2f)
+        camera.position.y =
+            MathUtils.clamp(camera.position.y, effectiveViewportHeight / 2f, worldHeight - effectiveViewportHeight / 2f)
     }
 }

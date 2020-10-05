@@ -16,6 +16,8 @@ class TestGame : Game() {
     }
 
     override fun dispose() {
+        super.dispose()
+
         skin.dispose()
     }
 }

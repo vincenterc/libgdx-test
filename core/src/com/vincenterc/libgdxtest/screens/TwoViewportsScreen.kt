@@ -17,6 +17,8 @@ class TwoViewportsScreen(var game: TestGame) : BaseScreen() {
     private var img = Texture(Gdx.files.internal("badlogic.jpg"))
 
     override fun show() {
+        super.show()
+
         // Center camera
         viewport.camera.position.set(viewport.worldWidth / 2f, viewport.worldHeight / 2f, 0f)
 
@@ -27,6 +29,9 @@ class TwoViewportsScreen(var game: TestGame) : BaseScreen() {
         )
         menuButton.addListener(object : InputListener() {
             override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {
+
+                println("touchDown....")
+
                 game.screen = MenuScreen(game)
                 return true
             }

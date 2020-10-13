@@ -13,13 +13,18 @@ import com.vincenterc.libgdxtest.TestGame
 
 class CameraControlScreen(game: TestGame) : BaseScreen(game) {
 
-    var viewport = FitViewport(Config.screenWidth.toFloat(), Config.screenHeight.toFloat())
-    var batch = SpriteBatch()
-    private var img = Texture(Gdx.files.internal("map-large.jpg"))
+    private val viewport = FitViewport(Config.screenWidth.toFloat(), Config.screenHeight.toFloat())
+    private val batch = SpriteBatch()
+    private val img = Texture(Gdx.files.internal("map-large.jpg"))
 
-    override fun show() {
+    init {
         viewport.camera.position.set(viewport.worldWidth / 2f, viewport.worldHeight / 2f, 0f)
 
+        val menuButton = getMenuButton()
+        stage.addActor(menuButton)
+    }
+
+    override fun show() {
         val cameraController = OrthoCamController(
             viewport.camera as OrthographicCamera,
             img.width.toFloat(),
@@ -29,9 +34,6 @@ class CameraControlScreen(game: TestGame) : BaseScreen(game) {
         inputMultiplexer.addProcessor(stage)
         inputMultiplexer.addProcessor(cameraController)
         Gdx.input.inputProcessor = inputMultiplexer
-
-        val menuButton = getMenuButton()
-        stage.addActor(menuButton)
     }
 
     override fun resize(width: Int, height: Int) {

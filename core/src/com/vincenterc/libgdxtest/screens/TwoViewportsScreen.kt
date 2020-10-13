@@ -10,13 +10,11 @@ import com.vincenterc.libgdxtest.TestGame
 
 class TwoViewportsScreen(game: TestGame) : BaseScreen(game) {
 
-    private var viewport = StretchViewport(Config.screenWidth.toFloat(), Config.screenHeight.toFloat())
-    private var batch = SpriteBatch()
-    private var img = Texture(Gdx.files.internal("badlogic.jpg"))
+    private val viewport = StretchViewport(Config.screenWidth.toFloat(), Config.screenHeight.toFloat())
+    private val batch = SpriteBatch()
+    private val img = Texture(Gdx.files.internal("badlogic.jpg"))
 
-    override fun show() {
-        super.show()
-
+    init {
         // Center camera
         viewport.camera.position.set(viewport.worldWidth / 2f, viewport.worldHeight / 2f, 0f)
 

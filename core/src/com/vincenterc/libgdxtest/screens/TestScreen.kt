@@ -7,11 +7,9 @@ import com.vincenterc.libgdxtest.TestGame
 
 class TestScreen(game: TestGame) : BaseScreen(game) {
 
-    private var img = Texture(Gdx.files.internal("badlogic.jpg"))
+    private val img = Texture(Gdx.files.internal("badlogic.jpg"))
 
-    override fun show() {
-        super.show()
-
+    init {
         val menuButton = getMenuButton()
         stage.addActor(menuButton)
     }

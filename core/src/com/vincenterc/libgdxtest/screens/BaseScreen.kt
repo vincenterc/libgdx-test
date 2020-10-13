@@ -13,7 +13,7 @@ import com.vincenterc.libgdxtest.Config
 import com.vincenterc.libgdxtest.TestGame
 
 open class BaseScreen(protected val game: TestGame) : ScreenAdapter() {
-    var stage = Stage(FitViewport(Config.screenWidth.toFloat(), Config.screenHeight.toFloat()))
+    protected val stage = Stage(FitViewport(Config.screenWidth.toFloat(), Config.screenHeight.toFloat()))
 
     override fun show() {
         Gdx.input.inputProcessor = stage

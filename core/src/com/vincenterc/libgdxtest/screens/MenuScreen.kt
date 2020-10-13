@@ -10,9 +10,7 @@ import com.vincenterc.libgdxtest.TestGame
 
 class MenuScreen(game: TestGame) : BaseScreen(game) {
 
-    override fun show() {
-        super.show()
-
+    init {
         val testScreenButton = TextButton("Test", game.skin)
         testScreenButton.addListener(object : InputListener() {
             override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {

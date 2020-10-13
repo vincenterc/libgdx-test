@@ -11,9 +11,9 @@ import kotlin.reflect.KClass
 
 class LoadingScreen<T : Screen>(game: TestGame, private val nextScreen: KClass<T>) : BaseScreen(game) {
 
-    var progressBar = ProgressBar(0f, 100f, 1f, false, game.skin)
+    private val progressBar = ProgressBar(0f, 100f, 1f, false, game.skin)
 
-    override fun show() {
+    init {
         progressBar.setAnimateDuration(1f)
 
         val table = Table()

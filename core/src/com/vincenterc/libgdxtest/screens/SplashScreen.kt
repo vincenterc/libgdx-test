@@ -20,9 +20,6 @@ class SplashScreen(game: TestGame) : BaseScreen(game) {
         labelStyle.font = font
         labelStyle.fontColor = Color.LIGHT_GRAY
         label = Label("Loading...", labelStyle)
-    }
-
-    override fun show() {
         label.setFontScale(2f)
         label.setPosition(
             stage.viewport.worldWidth / 2f - label.width * label.fontScaleX / 2f,

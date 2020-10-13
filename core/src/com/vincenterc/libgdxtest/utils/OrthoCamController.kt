@@ -43,7 +43,10 @@ class OrthoCamController(
     }
 
     private fun clampCameraPosition() {
-        camera.zoom = if (worldWidth > worldHeight) {
+        val worldRatio = worldWidth / worldHeight
+        val viewportRatio = camera.viewportWidth / camera.viewportHeight
+
+        camera.zoom = if (worldRatio > viewportRatio) {
             MathUtils.clamp(camera.zoom, 0.1f, worldHeight / camera.viewportHeight)
         } else {
             MathUtils.clamp(camera.zoom, 0.1f, worldWidth / camera.viewportWidth)

@@ -8,11 +8,12 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent
 import com.badlogic.gdx.scenes.scene2d.InputListener
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton
 import com.badlogic.gdx.utils.viewport.StretchViewport
+import com.vincenterc.libgdxtest.Config
 import com.vincenterc.libgdxtest.TestGame
 
 class TwoViewportsScreen(var game: TestGame) : BaseScreen() {
 
-    private var viewport = StretchViewport(640f, 480f)
+    private var viewport = StretchViewport(Config.screenWidth.toFloat(), Config.screenHeight.toFloat())
     private var batch = SpriteBatch()
     private var img = Texture(Gdx.files.internal("badlogic.jpg"))
 

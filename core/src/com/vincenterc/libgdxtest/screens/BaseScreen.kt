@@ -6,9 +6,10 @@ import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.utils.viewport.FitViewport
+import com.vincenterc.libgdxtest.Config
 
 open class BaseScreen : ScreenAdapter() {
-    var stage = Stage(FitViewport(640f, 480f))
+    var stage = Stage(FitViewport(Config.screenWidth.toFloat(), Config.screenHeight.toFloat()))
 
     override fun show() {
         Gdx.input.inputProcessor = stage

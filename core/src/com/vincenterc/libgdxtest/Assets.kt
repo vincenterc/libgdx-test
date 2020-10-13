@@ -18,6 +18,6 @@ class Assets {
 }
 
 object AssetDescriptors {
-    val skin = AssetDescriptor<Skin>("uiskin.json", Skin::class.java)
+    val skin = AssetDescriptor<Skin>("skin/uiskin.json", Skin::class.java)
 }
 

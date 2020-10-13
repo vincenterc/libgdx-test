@@ -6,15 +6,12 @@ import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
-import com.badlogic.gdx.scenes.scene2d.InputEvent
-import com.badlogic.gdx.scenes.scene2d.InputListener
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton
 import com.badlogic.gdx.utils.viewport.FitViewport
 import com.vincenterc.libgdxtest.Config
 import com.vincenterc.libgdxtest.utils.OrthoCamController
 import com.vincenterc.libgdxtest.TestGame
 
-class CameraControlScreen(var game: TestGame) : BaseScreen() {
+class CameraControlScreen(game: TestGame) : BaseScreen(game) {
 
     var viewport = FitViewport(Config.screenWidth.toFloat(), Config.screenHeight.toFloat())
     var batch = SpriteBatch()
@@ -33,17 +30,7 @@ class CameraControlScreen(var game: TestGame) : BaseScreen() {
         inputMultiplexer.addProcessor(cameraController)
         Gdx.input.inputProcessor = inputMultiplexer
 
-        val menuButton = TextButton("Menu", game.skin)
-        menuButton.setPosition(
-            stage.width - menuButton.width - 10f,
-            stage.height - menuButton.height - 10f
-        )
-        menuButton.addListener(object : InputListener() {
-            override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {
-                game.screen = MenuScreen(game)
-                return true
-            }
-        })
+        val menuButton = getMenuButton()
         stage.addActor(menuButton)
     }
 

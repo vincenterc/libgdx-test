@@ -3,13 +3,10 @@ package com.vincenterc.libgdxtest.screens
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.Texture
-import com.badlogic.gdx.scenes.scene2d.InputEvent
-import com.badlogic.gdx.scenes.scene2d.InputListener
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton
 import com.vincenterc.libgdxtest.AssetDescriptors
 import com.vincenterc.libgdxtest.TestGame
 
-class AssetsLoadingScreen(val game: TestGame) : BaseScreen() {
+class AssetsLoadingScreen(game: TestGame) : BaseScreen(game) {
 
     private val img = Texture("sc_map.png")
     private var imgDrawWidth = img.width.toFloat()
@@ -27,17 +24,7 @@ class AssetsLoadingScreen(val game: TestGame) : BaseScreen() {
         imgDrawWidth = img.width * imgScale
         imgDrawHeight = img.height * imgScale
 
-        val menuButton = TextButton("Menu", game.skin)
-        menuButton.setPosition(
-            stage.width - menuButton.width - 10f,
-            stage.height - menuButton.height - 10f
-        )
-        menuButton.addListener(object : InputListener() {
-            override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {
-                game.screen = MenuScreen(game)
-                return true
-            }
-        })
+        val menuButton = getMenuButton()
         stage.addActor(menuButton)
     }
 

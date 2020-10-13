@@ -8,7 +8,7 @@ import com.vincenterc.libgdxtest.AssetDescriptors
 import com.vincenterc.libgdxtest.Config
 import com.vincenterc.libgdxtest.TestGame
 
-class MenuScreen(var game: TestGame) : BaseScreen() {
+class MenuScreen(game: TestGame) : BaseScreen(game) {
 
     override fun show() {
         super.show()

@@ -3,29 +3,16 @@ package com.vincenterc.libgdxtest.screens
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.Texture
-import com.badlogic.gdx.scenes.scene2d.InputEvent
-import com.badlogic.gdx.scenes.scene2d.InputListener
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton
 import com.vincenterc.libgdxtest.TestGame
 
-class TestScreen(var game: TestGame) : BaseScreen() {
+class TestScreen(game: TestGame) : BaseScreen(game) {
 
     private var img = Texture(Gdx.files.internal("badlogic.jpg"))
 
     override fun show() {
         super.show()
 
-        val menuButton = TextButton("Menu", game.skin)
-        menuButton.setPosition(
-            stage.width - menuButton.width - 10f,
-            stage.height - menuButton.height - 10f
-        )
-        menuButton.addListener(object : InputListener() {
-            override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {
-                game.screen = MenuScreen(game)
-                return true
-            }
-        })
+        val menuButton = getMenuButton()
         stage.addActor(menuButton)
     }
 

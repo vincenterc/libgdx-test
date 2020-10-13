@@ -9,7 +9,7 @@ import com.vincenterc.libgdxtest.Config
 import com.vincenterc.libgdxtest.TestGame
 import kotlin.reflect.KClass
 
-class LoadingScreen<T : Screen>(val game: TestGame, private val nextScreen: KClass<T>) : BaseScreen() {
+class LoadingScreen<T : Screen>(game: TestGame, private val nextScreen: KClass<T>) : BaseScreen(game) {
 
     var progressBar = ProgressBar(0f, 100f, 1f, false, game.skin)
 

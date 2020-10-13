@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label
 import com.vincenterc.libgdxtest.AssetDescriptors
 import com.vincenterc.libgdxtest.TestGame
 
-class SplashScreen(val game: TestGame) : BaseScreen() {
+class SplashScreen(game: TestGame) : BaseScreen(game) {
 
     private val font = BitmapFont()
     private val label: Label

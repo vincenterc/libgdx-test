@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener
 import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton
 import com.vincenterc.libgdxtest.AssetDescriptors
+import com.vincenterc.libgdxtest.Config
 import com.vincenterc.libgdxtest.TestGame
 
 class MenuScreen(var game: TestGame) : BaseScreen() {
@@ -59,7 +60,7 @@ class MenuScreen(var game: TestGame) : BaseScreen() {
         table.row()
         table.add(assetsLoadingScreenButton)
         table.setFillParent(true)
-//        table.debug = true
+        if (Config.debug) table.debug = true
         stage.addActor(table)
     }
 }

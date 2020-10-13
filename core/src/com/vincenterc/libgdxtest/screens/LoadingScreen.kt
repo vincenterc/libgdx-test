@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar
 import com.badlogic.gdx.scenes.scene2d.ui.Table
+import com.vincenterc.libgdxtest.Config
 import com.vincenterc.libgdxtest.TestGame
 import kotlin.reflect.KClass
 
@@ -18,7 +19,7 @@ class LoadingScreen<T : Screen>(val game: TestGame, private val nextScreen: KCla
         val table = Table()
         table.add(progressBar).width(stage.viewport.worldWidth / 3f)
         table.setFillParent(true)
-//        table.debug = true
+        if (Config.debug) table.debug = true
         stage.addActor(table)
     }
 

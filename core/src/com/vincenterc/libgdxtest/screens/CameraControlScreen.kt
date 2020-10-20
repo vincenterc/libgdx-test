@@ -49,7 +49,9 @@ class CameraControlScreen(game: TestGame) : BaseScreen(game) {
         viewport.apply()
         batch.projectionMatrix = viewport.camera.combined
         batch.begin()
+        batch.disableBlending()
         batch.draw(img, 0f, 0f)
+        batch.enableBlending()
         batch.end()
 
         stage.viewport.apply()

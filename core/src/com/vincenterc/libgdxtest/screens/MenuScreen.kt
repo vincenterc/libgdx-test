@@ -18,7 +18,6 @@ class MenuScreen(game: TestGame) : BaseScreen(game) {
                 return true
             }
         })
-        stage.addActor(testScreenButton)
 
         val twoViewportsScreenButton = TextButton("Two Viewports", game.skin)
         twoViewportsScreenButton.addListener(object : InputListener() {
@@ -27,7 +26,6 @@ class MenuScreen(game: TestGame) : BaseScreen(game) {
                 return true
             }
         })
-        stage.addActor(twoViewportsScreenButton)
 
         val cameraControlScreenButton = TextButton("Camera Control", game.skin)
         cameraControlScreenButton.addListener(object : InputListener() {
@@ -36,7 +34,6 @@ class MenuScreen(game: TestGame) : BaseScreen(game) {
                 return true
             }
         })
-        stage.addActor(cameraControlScreenButton)
 
         val assetsLoadingScreenButton = TextButton("Assets Loading", game.skin)
         assetsLoadingScreenButton.addListener(object : InputListener() {
@@ -46,7 +43,6 @@ class MenuScreen(game: TestGame) : BaseScreen(game) {
                 return true
             }
         })
-        stage.addActor(assetsLoadingScreenButton)
 
         val table = Table()
         table.defaults().fillX().spaceBottom(10f)

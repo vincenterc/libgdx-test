@@ -10,51 +10,40 @@ import com.vincenterc.libgdxtest.TestGame
 
 class MenuScreen(game: TestGame) : BaseScreen(game) {
 
+    private val menuButtons = listOf(
+        MenuButton("Test", fun() { game.screen = TestScreen(game) }),
+        MenuButton("Two Viewports", fun() { game.screen = TwoViewportsScreen(game) }),
+        MenuButton("Camera Control", fun() { game.screen = CameraControlScreen(game) }),
+        MenuButton("Assets Loading", fun() {
+            game.assets.manager.load(AssetDescriptors.scMap)
+            game.screen = LoadingScreen(game, AssetsLoadingScreen::class)
+        })
+    )
+
     init {
-        val testScreenButton = TextButton("Test", game.skin)
-        testScreenButton.addListener(object : InputListener() {
-            override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {
-                game.screen = TestScreen(game)
-                return true
-            }
-        })
+        generateMenuButtons()
+    }
 
-        val twoViewportsScreenButton = TextButton("Two Viewports", game.skin)
-        twoViewportsScreenButton.addListener(object : InputListener() {
-            override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {
-                game.screen = TwoViewportsScreen(game)
-                return true
-            }
-        })
-
-        val cameraControlScreenButton = TextButton("Camera Control", game.skin)
-        cameraControlScreenButton.addListener(object : InputListener() {
-            override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {
-                game.screen = CameraControlScreen(game)
-                return true
-            }
-        })
-
-        val assetsLoadingScreenButton = TextButton("Assets Loading", game.skin)
-        assetsLoadingScreenButton.addListener(object : InputListener() {
-            override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {
-                game.assets.manager.load(AssetDescriptors.scMap)
-                game.screen = LoadingScreen(game, AssetsLoadingScreen::class)
-                return true
-            }
-        })
-
+    private fun generateMenuButtons() {
         val table = Table()
         table.defaults().fillX().spaceBottom(10f)
-        table.add(testScreenButton)
-        table.row()
-        table.add(twoViewportsScreenButton)
-        table.row()
-        table.add(cameraControlScreenButton)
-        table.row()
-        table.add(assetsLoadingScreenButton)
+
+        menuButtons.forEach {
+            val button = TextButton(it.title, game.skin)
+            button.addListener(object : InputListener() {
+                override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {
+                    it.touchDownFn.invoke()
+                    return true
+                }
+            })
+            table.add(button)
+            table.row()
+        }
+
         table.setFillParent(true)
         if (Config.debug) table.debug = true
         stage.addActor(table)
     }
 }
+
+data class MenuButton(val title: String, val touchDownFn: () -> Unit)

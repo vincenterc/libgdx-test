@@ -17,7 +17,8 @@ class MenuScreen(game: TestGame) : BaseScreen(game) {
         MenuButton("Assets Loading", fun() {
             game.assets.manager.load(AssetDescriptors.scMap)
             game.screen = LoadingScreen(game, AssetsLoadingScreen::class)
-        })
+        }),
+        MenuButton("Animation", fun() { game.screen = AnimationScreen(game) })
     )
 
     init {

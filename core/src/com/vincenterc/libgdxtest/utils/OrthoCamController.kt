@@ -26,20 +26,20 @@ class OrthoCamController(
         }
         lastPos.set(screenX.toFloat(), screenY.toFloat(), 0f)
 
-        return false
+        return true
     }
 
     override fun touchUp(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean {
         lastPos.set(-1f, -1f, -1f)
 
-        return false
+        return true
     }
 
     override fun scrolled(amount: Int): Boolean {
         camera.zoom += amount * scrollScale
         clampCameraPosition()
 
-        return false
+        return true
     }
 
     private fun clampCameraPosition() {

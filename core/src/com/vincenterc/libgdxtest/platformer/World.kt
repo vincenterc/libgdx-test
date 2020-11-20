@@ -6,10 +6,10 @@ import com.badlogic.gdx.utils.Array
 class World {
 
     // The blocks making up the world
-    private var blocks = Array<Block>()
+    var blocks = Array<Block>()
 
     // Our player controlled hero
-    private lateinit var bob: Bob
+    lateinit var bob: Bob
 
     init {
         createDemoWorld()

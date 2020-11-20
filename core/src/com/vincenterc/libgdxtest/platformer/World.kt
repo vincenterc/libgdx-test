@@ -20,7 +20,7 @@ class World {
 
         for (i in 0..9) {
             blocks.add(Block(Vector2(i.toFloat(), 0f)))
-            blocks.add(Block(Vector2(i.toFloat(), 7f)))
+            blocks.add(Block(Vector2(i.toFloat(), 6f)))
             if (i > 2) blocks.add(Block(Vector2(i.toFloat(), 1f)))
         }
 

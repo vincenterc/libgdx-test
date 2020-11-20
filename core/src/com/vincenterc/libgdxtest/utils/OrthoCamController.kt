@@ -35,8 +35,8 @@ class OrthoCamController(
         return true
     }
 
-    override fun scrolled(amount: Int): Boolean {
-        camera.zoom += amount * scrollScale
+    override fun scrolled(amountX: Float, amountY: Float): Boolean {
+        camera.zoom += amountY * scrollScale
         clampCameraPosition()
 
         return true

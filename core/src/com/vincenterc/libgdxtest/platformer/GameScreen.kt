@@ -11,7 +11,11 @@ class GameScreen : ScreenAdapter() {
 
     override fun show() {
         world = World()
-        renderer = WorldRenderer(world)
+        renderer = WorldRenderer(world, false)
+    }
+
+    override fun resize(width: Int, height: Int) {
+        renderer.setSize(width, height)
     }
 
     override fun render(delta: Float) {

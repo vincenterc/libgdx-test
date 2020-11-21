@@ -10,7 +10,7 @@ class Bob(var position: Vector2) {
     }
 
     companion object {
-        const val SPEED = 2f // unit per second
+        const val SPEED = 4f // unit per second
         const val JUMP_VELOCITY = 1f
         const val SIZE = 0.5f // half a unit
     }
@@ -24,5 +24,9 @@ class Bob(var position: Vector2) {
     init {
         bounds.width = SIZE
         bounds.height = SIZE
+    }
+
+    fun update(delta: Float) {
+        position.add(velocity.cpy().scl(delta))
     }
 }

@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
+import com.badlogic.gdx.utils.Array
 
 class WorldRenderer(private val world: World, var debug: Boolean) {
 
@@ -58,7 +59,7 @@ class WorldRenderer(private val world: World, var debug: Boolean) {
     }
 
     private fun drawBlocks() {
-        for (block in world.blocks) {
+        for (block in Array.ArrayIterator(world.blocks)) {
             spriteBatch.draw(
                 blockTexture,
                 block.position.x * ppuX,
@@ -85,7 +86,7 @@ class WorldRenderer(private val world: World, var debug: Boolean) {
 
         // render blocks
         debugRenderer.begin(ShapeRenderer.ShapeType.Line)
-        for (block in world.blocks) {
+        for (block in Array.ArrayIterator(world.blocks)) {
             val rect = block.bounds
             val x1 = block.position.x + rect.x
             val y1 = block.position.y + rect.y

@@ -19,6 +19,7 @@ class MenuScreen(game: TestGame) : BaseScreen(game) {
             game.screen = LoadingScreen(game, AssetsLoadingScreen::class)
         }),
         MenuButton("Animation", fun() { game.screen = AnimationScreen(game) }),
+        MenuButton("MVC", fun() { game.screen = MVCScreen(game) }),
         MenuButton("Platformer", fun() { game.screen = PlatformerScreen(game) })
     )
 
